@@ -70,7 +70,8 @@ int main()
     for (int i = 0; i < n; i++)
     {
         printf("%d\t", arr[i]);
-        scanf("%d\t%d", &value[i], &weight[i]);
+        scanf("%d", &value[i]);
+		scanf("%d", &weight[i]);
     }
 
     int amount;
