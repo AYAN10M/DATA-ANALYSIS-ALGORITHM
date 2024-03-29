@@ -1,4 +1,4 @@
 https://youtu.be/jhW7VwP2Djw?si=YwVffTDNa559qOC7
 
 With normal approch the time complexity becames O(n*n)
-Using window sliding Technique this can be reduced to O(nlogn)
+Using window sliding Technique this can be reduced to O(n)
