@@ -1,0 +1,68 @@
+Line-by-Line Explanation of the C code:
+
+**1. `long long countSubarrays(int *nums, int numsSize, int k) {`**
+
+- This line defines a function named `countSubarrays`.
+- The function takes three arguments:
+    - `nums`: A pointer to an integer array containing the elements.
+    - `numsSize`: An integer representing the size of the `nums` array.
+    - `k`: An integer representing the minimum number of elements equal to the maximum value for a valid subarray.
+- The return type of the function is `long long`, which can hold a larger range of integer values than `long`.
+
+**2. `int i = 0;`**
+
+- This line declares an integer variable `i` and initializes it to 0. This variable will be used as the left index of a sliding window during the algorithm.
+
+**3. `int j = 0;`**
+
+- This line declares another integer variable `j` and initializes it to 0. This variable will be used as the right index of the sliding window during the algorithm.
+
+**4. `int max = 0;`**
+
+- This line declares an integer variable `max` and initializes it to 0. This variable will store the maximum element found in the `nums` array.
+
+**5. `for (int m = 0; m < numsSize; m++) {`**
+**    `if (nums[m] > max) {`**
+**        `max = nums[m];`**
+**    `}`**
+**`}`**
+
+- This is a `for` loop that iterates through the entire `nums` array (`m` from 0 to `numsSize-1`).
+- Inside the loop, it checks if the current element (`nums[m]`) is greater than the current `max`.
+- If the element is greater, it updates the `max` variable to store the new maximum element found so far. 
+
+**6. `long long ans = 0;`**
+
+- This line declares a `long long` variable `ans` and initializes it to 0. This variable will store the final count of valid subarrays found in the `nums` array.
+
+**7. `int freq[100001] = {0}; // Adjust array size based on expected value range`**
+
+- This line declares an integer array `freq` of size 100001 and initializes all elements to 0. This array will be used to store the frequency of each element in the `nums` array. 
+**Note:** You might need to adjust the size of the array `freq` based on the expected range of values in your specific use case. 
+
+**8. `while (j < numsSize) {`**
+**    `freq[nums[j]]++;`**
+**    `while (freq[max] >= k && freq[max] > 0) {`**
+**        `freq[nums[i]]--;`**
+**        `ans += numsSize - j;`**
+**        `i++;`**
+**    `}`**
+**    `j++;`**
+**`}`**
+
+- This is the core logic of the algorithm implemented using a `while` loop. 
+    - The loop continues as long as `j` (right index) is within the bounds of the `nums` array.
+    - Inside the loop:
+        - `freq[nums[j]]++`: This increments the count of the current element (`nums[j]`) in the `freq` array.
+        - The inner `while` loop continues as long as:
+            - The frequency of the maximum element (`freq[max]`) is greater than or equal to `k`.
+            - There are elements with the maximum value (`freq[max] > 0`). This check prevents accessing the array out of bounds.
+        - Inside the inner loop:
+            - `freq[nums[i]]--`: This decrements the count of the element at the left index (`i`) of the window.
+            - `ans += numsSize - j`: This calculates the number of valid subarrays formed with the current window. It subtracts `j` (right index) from the total size (`numsSize`) to get the length of the window.
+            - `i++`: This increments the left index (`i`) of the window to move it forward.
+    - After the inner loop, the right index (`j`) is incremented to expand the window for the next iteration. 
+
+**9. `return ans;`**
+
+- This line returns the final count of valid subarrays stored in the `ans` variable.
