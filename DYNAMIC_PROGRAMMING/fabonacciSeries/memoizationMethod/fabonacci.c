@@ -32,8 +32,7 @@ int main()
     printf("Enter the number of terms:\t");
     scanf("%d", &n);
 
-    // Ensure the DP array has enough space to store all Fibonacci numbers up to n
-    int dp[n + 1]; // +1 to accommodate terms from 0 to n
+    int dp[n + 1];
 
     // Initialize the DP array with -1 to indicate uncalculated values
     for (int i = 0; i <= n; i++)
