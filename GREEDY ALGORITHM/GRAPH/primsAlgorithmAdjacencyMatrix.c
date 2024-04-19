@@ -7,13 +7,13 @@
     The <limits.h> header file in C programming defines the characteristics of various variable types. The values are implementation specific, but may not be of lower magnitude than certain specified values in a conforming C implementation.
 
     For example, the minimum value for an object of type char is -127, and the maximum value is 127. These values are defined in the <limits.h> header file.
-    
+
     The <limits.h> header file also defines the following macros:
         INT_MIN: The minimum value for an object of type int.
         INT_MAX: The maximum value for an object of type int.
         LONG_MIN: The minimum value for an object of type long.
         LONG_MAX: The maximum value for an object of type long.
-    
+
     These macros can be used to determine the range of values that can be stored in a variable of a given type.
 */
 
@@ -57,8 +57,7 @@ int main()
         src--;  // Adjusting for 0-based indexing
         dest--; // Adjusting for 0-based indexing
 
-
-        edges[src][dest] = edges[dest][src] = 1; 
+        edges[src][dest] = edges[dest][src] = 1;
         weight[src][dest] = weight[dest][src] = wt;
     }
 
