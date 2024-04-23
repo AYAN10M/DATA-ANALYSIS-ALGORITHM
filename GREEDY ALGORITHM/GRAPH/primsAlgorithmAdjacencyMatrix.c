@@ -94,11 +94,11 @@ int primsMST(int v, int edges[][v], int weight[][v])
         // Find the edge with minimum weight that connects a selected vertex to an unselected vertex
         for (int i = 0; i < v; i++)
         {
-            if (selected[i])
+            if (selected[i] == 1)
             {
                 for (int j = 0; j < v; j++)
                 {
-                    if (!selected[j] && edges[i][j] && weight[i][j] < minWeight)
+                    if (selected[j] == 0 && edges[i][j] && weight[i][j] < minWeight)
                     {
                         minWeight = weight[i][j];
                         u = i;

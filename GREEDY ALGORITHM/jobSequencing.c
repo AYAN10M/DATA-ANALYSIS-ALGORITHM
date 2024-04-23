@@ -14,18 +14,15 @@ int jobSequenceWithDeadline(Job jobs[], int timeline[], int n, int maxDeadline)
 
     for (int i = 0; i < n; i++)
     {
-        if (jobs[i].deadline <= maxDeadline)
+        int j = jobs[i].deadline - 1;
+        while (j >= 0 && timeline[j] != -1)
         {
-            int j = jobs[i].deadline - 1;
-            while (j >= 0 && timeline[j] != -1)
-            {
-                j--;
-            }
-            if (j >= 0)
-            {
-                timeline[j] = jobs[i].id;
-                profit += jobs[i].profit;
-            }
+            j--;
+        }
+        if (j >= 0)
+        {
+            timeline[j] = jobs[i].id;
+            profit += jobs[i].profit;
         }
     }
 
