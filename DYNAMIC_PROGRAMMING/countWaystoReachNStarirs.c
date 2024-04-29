@@ -19,8 +19,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// memoziation approch
-
+// memoziation approch [top down approch]
 int countSteps(int n, int dp[])
 {
     if (n == 0 || n == 1)
@@ -34,6 +33,20 @@ int countSteps(int n, int dp[])
     }
 
     dp[n] = countSteps(n - 1, dp) + countSteps(n - 2, dp);
+
+    return dp[n];
+}
+
+// tabulation approch [buttom up approch]
+int countSteps(int n, int dp[])
+{
+    dp[0] = 1;
+    dp[1] = 1;
+
+    for (int i = 2; i <= n; i++)
+    {
+        dp[n] = dp[i - 1] + dp[i - 2];
+    }
 
     return dp[n];
 }
