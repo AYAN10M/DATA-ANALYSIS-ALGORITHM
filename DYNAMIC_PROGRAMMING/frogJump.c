@@ -9,29 +9,52 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-
-int min(int a, int b)
-{
-    if (a > b)
-    {
-        return b;
-    }
-
-    if (b > a)
-    {
-        return a;
-    }
-}
+#include <math.h>
 
 int minStep(int n, int height[], int dp[])
 {
-    int dp[0] = 0;
-    int dp[1] = 0;
+    if (n == 0 || n == 1)
+    {
+        return 0;
+    }
 
-    
+    if (dp[n] != -1)
+    {
+        return dp[n];
+    }
+
+    dp[n] = abs(height[n - 1] - height[n - 2]) + minStep(n - 1, height, dp);
+    if (n >= 3)
+    {
+        dp[n] = fmin(dp[n], abs(height[n - 1] - height[n - 3]) + minStep(n - 2, height, dp));
+    }
+
+    return dp[n];
 }
 
 int main()
+{
+    int n;
+    printf("Enter the number of steps:\t");
+    scanf("%d", &n);
+
+    int height[n];
+    for (int i = 0; i < n; i++)
+    {
+        printf("Enter height of step %d: ", i + 1);
+        scanf("%d", &height[i]);
+    }
+
+    int dp[n + 1];
+    for (int i = 0; i <= n; i++)
+    {
+        dp[i] = -1; // Initialize dp array
+    }
+
+    printf("Minimum energy the frog will need to reach step n: %d\n", minStep(n, height, dp));
+    return 0;
+}
+
 {
     int n;
     printf("Enter the number of steps:\t");

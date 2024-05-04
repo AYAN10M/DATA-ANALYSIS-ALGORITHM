@@ -12,7 +12,7 @@ int kruskalAlgo(int v, int edges[v][v], int weight[v][v])
 
     int u, w, minCost = 0;
 
-    for (int count = 0; count < v - 1; count++)
+    for (int count = 0; count < v - 1; count++) 
     {
         int min = INT_MAX;
         for (int i = 0; i < v; i++)
